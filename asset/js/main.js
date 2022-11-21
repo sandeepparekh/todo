@@ -92,3 +92,64 @@ var chart = new Chart(ctx, {
 $('.side-open').on('click', function() {
     $('.task-body').toggleClass('active');
 });
+
+$('.open-task-body').on('click', function() {
+    $('.add-task-body').toggleClass('active');
+    $('.add-task').toggleClass('active');
+    $('#task').hide();
+    setTimeout(function() {
+        $('#task').show();
+    }, 1000);
+});
+
+$(document).ready(function() {
+    $('.progress .progress-bar').css("width",
+              function() {
+                  return $(this).attr("aria-valuenow") + "%";
+              }
+
+    )
+    
+    $('.progress .progress-bar').css("background",
+        function() {
+        return $(this).attr("area-color");
+        }
+    )
+    
+    $('.progress .progress-bar').css("box-shadow",
+        
+        function () {
+            return '0 4px 8px 0 rgb('+hexToRgb($(this).attr("area-color")).r+' '+hexToRgb($(this).attr("area-color")).g+' '+hexToRgb($(this).attr("area-color")).b+' / 60%), 0 6px 20px 0 rgb(0 0 0 / 19%)';
+        }
+        
+    )
+
+    hexToRgb("#0033ff").g
+});
+
+function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : null;
+}
+
+$('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:0,
+    autoplay:false,
+    nav:false,
+    center:false,
+    dots: false,
+    responsive:{
+        0:{
+            items:1.5
+        },
+        
+        1000:{
+            items:1.5
+        }
+    }
+})
